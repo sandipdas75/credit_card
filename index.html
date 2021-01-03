@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Page Title</title>
+<title>Credit Card Design</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="index.css" />
@@ -11,30 +11,59 @@
 <body>
   <div class="cover"></div>
   <div class="forms">
-
     <form onsubmit="myFunction()">
-      <h3><i class="material-icons">lock</i> New Payment Method</h3>
       <h4><i class="material-icons">credit_card</i> Enter Payment Information</h4>
-      <div id="cc">
+      <div class="flexrow">
+        <div id="cc">
         <label>Card Number <span class="pull-right card-type"></span></label>
         <input class="form-control" type="text" placeholder="1111 2222 3333 4444" name="creditcard" />
-
       </div>
-      <div class="flexrow">
-        <div id="date">
+      <div id="date">
           <label>Expiration Date</label>
           <div class="flexrow flow-left">
            <input class="form-control" name=x size=10 maxlength=10 placeholder="03/21"  onkeyup="this.value=this.value.replace(/^(\d\d)(\d)$/g,'$1/$2').replace(/^(\d\d\/\d\d)(\d+)$/g,'$1/$2').replace(/[^\d\/]/g,'')">
           </div>
         </div>
+       
+      </div>
+      <div class="flexrow">
         <div id="csv">
           <label>CVC</label>
           <div class="flexrow flow-right">
             <input  id="creditCard" type="password" class="form-control" maxlength="3" name="cvc" autocomplete="no" placeholder="XXX" />
           </div>
-        </div>
       </div>
-      <div class="flexrow flow-right buttonrow">
+       
+        <div id="">
+        <label>Phone Number</label>
+            <div class="flexrow">
+                <div class="">
+                    <select id="country_based_phn_number" class="country_based_phn_number">
+                        <option value="+1" data-country-placeholder="(201) 555-0123">
+                            <span class="iti__country-name">United States</span>
+                        </option>
+                        <option value="+91"  data-country-placeholder="081234 56789">
+                            <span class="iti__country-name">India</span>
+                        </option>
+                        <option value="+44" data-country-placeholder="07400 123456">
+                            <span class="iti__country-name">United Kingdom</span>
+                        </option>
+                        <option value="+93" data-country-placeholder="070 123 4567">
+                            <span class="iti__country-name">Afghanistan</span>
+                        </option>
+                        <option value="+54"  data-country-placeholder="011 15-2345-6789">
+                            <span class="iti__country-name">Argentina</span>
+                        </option>
+                    </select>
+                </div>
+                <div class="flexrow flow-left">
+                    <input type="tel" id="phone" class="form-control" autocomplete="off" data-intl-tel-input-id="0" placeholder="(201) 555-0123">
+                </div>
+            </div>
+        </div>
+        
+      </div>
+      <div class="flexrow flow-center buttonrow">
         <button class="confirm" disabled="disabled">Confirm</button>
       </div>
     </form>
@@ -42,9 +71,18 @@
     var months = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 var currentYear = 0;
 var currentMonth = 0;
+
 function myFunction() {
   console.log("done");
 }
+
+$('#country_based_phn_number').change(function() {
+    var currVal= $(this).val();
+    var option = $('option:selected', this).attr('data-country-placeholder');
+    console.log('option',option)
+    $('#phone').prop('placeholder',option);
+});
+
 function formatCC(el, typeel) {
   var ccNumString = el.val();
   ccNumString = ccNumString.replace(/[^0-9]/g, "");
@@ -167,6 +205,7 @@ $(function () {
   loadactions();
 });
 var number = $('#creditCard');
+
 $('#creditCard').keyup(function(){
     if($('#creditCard').val().length < 1){
         $('#show').text('');
@@ -176,7 +215,7 @@ $('#creditCard').keyup(function(){
         if(number.val().length <= 4){
             for(var i = 0; i < number.val().length; i++){                
                 a = a + '*';           
-                            }
+            }
         }
         else
         {

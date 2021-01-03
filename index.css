@@ -69,7 +69,7 @@ button {
   padding: 5px 15px;
   color: #fff;
   text-transform: uppercase;
-  font-size: 24px;
+  font-size: 20px;
   cursor: pointer;
 }
 button:not([disabled="disabled"]):hover {
@@ -82,7 +82,7 @@ button[disabled="disabled"] {
 form > i,
 form .form-control,
 form .form-control:focus {
-  font-size: 26px;
+  font-size: 16px;
   background: transparent;
   color: #fff;
   outline: none !important;
@@ -92,7 +92,7 @@ input[name="cvc"] {
 }
 input[name="creditcard"],
 input[name="creditcard"]:focus {
-  font-size: 37px;
+  font-size: 16px;
 }
 select[name="month"] {
   max-width: 75px;
@@ -134,6 +134,7 @@ form .form-control:focus {
   border-bottom: 3px solid #ffffff;
   border-radius: 0;
   text-align: left;
+  padding: 6px 0px;
 }
 .cover {
   z-index: -1;
@@ -156,4 +157,14 @@ form .form-control:focus {
 ::placeholder {
   color: rgba(255, 255, 255, 0.3) !important;
   opacity: 1;
+}
+.country_based_phn_number{
+    background: transparent;
+    outline: none;
+    border: none;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
+}
+.flow-center{
+    justify-content: center;
 }
